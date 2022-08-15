@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SpellingBeeSolver
 {
-    public static class SpellingBeeSolver
+    public static class Solver
     {
         public static List<string> GetValidWords(string letters)
         {

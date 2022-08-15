@@ -9,7 +9,7 @@ namespace SpellingBeeSolver.Infrastructure
     {
         public static string[] GetWordsFromFile()
         {
-            const string dataFilePath = "..\\..\\..\\data\\words_alpha.txt";
+            const string dataFilePath = ".\\data\\words_alpha.txt";
             string[] allWords = File.ReadAllLines(dataFilePath);
             
             return allWords;
