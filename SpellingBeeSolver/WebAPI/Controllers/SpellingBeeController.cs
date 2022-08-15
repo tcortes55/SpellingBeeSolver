@@ -12,10 +12,10 @@ namespace WebAPI.Controllers
     [ApiController]
     public class SpellingBeeController : ControllerBase
     {
-        [HttpGet]
-        public List<string> Get()
+        [HttpGet("{value}")]
+        public List<string> Get(string value)
         {
-            List<string> result = Solver.GetValidWords("ejavlin");
+            List<string> result = Solver.GetValidWords(value);
 
             return result;
         }
