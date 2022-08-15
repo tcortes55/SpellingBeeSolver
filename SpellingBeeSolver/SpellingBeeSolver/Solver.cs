@@ -37,7 +37,7 @@ namespace SpellingBeeSolver
 
         private static bool WordIsValid(string word, string letters)
         {
-            Util.RandomSleep();
+            //Util.RandomSleep();
 
             if (word.Length < 4)
             {
