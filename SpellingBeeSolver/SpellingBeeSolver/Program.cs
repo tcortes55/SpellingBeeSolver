@@ -28,13 +28,21 @@ namespace SpellingBeeSolver
             Console.WriteLine($"Time before: {DateTime.Now}");
             timer.Start();
 
-            foreach (string word in allWords)
+            //foreach (string word in allWords)
+            //{
+            //    if (WordIsValid(word, letters))
+            //    {
+            //        result.Add(word);
+            //    }
+            //}
+
+            Parallel.ForEach(allWords, word =>
             {
                 if (WordIsValid(word, letters))
                 {
                     result.Add(word);
                 }
-            }
+            });
 
             timer.Stop();
 
