@@ -1,7 +1,10 @@
-﻿using System;
+﻿using SpellingBeeSolver.Infrastructure;
+using SpellingBeeSolver.Model;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,39 +14,14 @@ namespace SpellingBeeSolver
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            const string dataFilePath = "..\\..\\..\\data\\words_alpha.txt";
-
-            string[] allWords = File.ReadAllLines(dataFilePath);
-
-            Console.WriteLine($"# of words = {allWords.Length}");
+            var timer = new Stopwatch();
 
             Console.WriteLine("Insert 7 letters (center letter first):");
             string letters = Console.ReadLine();
 
-            List<string> result = new List<string>();
-
-            var timer = new Stopwatch();
-
             Console.WriteLine($"Time before: {DateTime.Now}");
             timer.Start();
-
-            //foreach (string word in allWords)
-            //{
-            //    if (WordIsValid(word, letters))
-            //    {
-            //        result.Add(word);
-            //    }
-            //}
-
-            Parallel.ForEach(allWords, word =>
-            {
-                if (WordIsValid(word, letters))
-                {
-                    result.Add(word);
-                }
-            });
-
+            List<string> result = SpellingBeeSolver.GetValidWords(letters);
             timer.Stop();
 
             Console.WriteLine("Result:");
@@ -58,40 +36,22 @@ namespace SpellingBeeSolver
             Console.WriteLine("\n");
         }
 
-        private static bool WordIsValid(string word, string letters)
-        {
-            RandomSleep();
+        //public static async Task<T> Get(string url, string username = null, string password = null)
+        //{
+        //    T result = null;
+        //    using (var httpClient = new HttpClient())
+        //    {
+        //        var response = httpClient.GetAsync(new Uri(url)).Result;
+        //        result = await response.Content.ReadAsStringAsync().ContinueWith((Task<string> x) =>
+        //        {
+        //            if (x.IsFaulted)
+        //                throw x.Exception;
 
-            if (word.Length < 4)
-            {
-                return false;
-            }
+        //            result = JsonConvert.DeserializeObject<T>(x.Result);
+        //        });
+        //    }
 
-            if (!word.Contains(letters[0]))
-            {
-                return false;
-            }
-
-            foreach (char c in word)
-            {
-                if (!letters.Contains(c))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        private static void RandomSleep()
-        {
-            var r = new Random();
-            int n = r.Next(500);
-
-            if (n < 2)
-            {
-                Thread.Sleep(1);
-            }
-        }
+        //    return result;
+        //}
     }
 }
