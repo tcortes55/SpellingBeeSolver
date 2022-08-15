@@ -12,12 +12,36 @@ namespace WebAPI.Controllers
     [ApiController]
     public class SpellingBeeController : ControllerBase
     {
-        [HttpGet("{value}")]
-        public List<string> Get(string value)
+        [HttpGet("{source}")]
+        public IActionResult Get(string source, [FromQuery] string value)
         {
+            switch (source.ToUpper())
+            {
+                case "NYT":
+                    value = GetNytInputValue();
+                    break;
+                case "FREEBEE":
+                    value = GetFreebeeInputValue();
+                    break;
+                case "SELF":
+                    break;
+                default:
+                    return BadRequest();
+            }
+
             List<string> result = Solver.GetValidWords(value);
 
-            return result;
+            return Ok(result);
+        }
+
+        private string GetFreebeeInputValue()
+        {
+            return "frebiys";
+        }
+
+        private string GetNytInputValue()
+        {
+            return "newyork";
         }
     }
 }
