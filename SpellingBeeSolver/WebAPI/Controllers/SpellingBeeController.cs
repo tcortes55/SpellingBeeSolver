@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SpellingBeeSolver;
+using WebAPI.Helpers;
+using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
@@ -13,7 +15,7 @@ namespace WebAPI.Controllers
     public class SpellingBeeController : ControllerBase
     {
         [HttpGet("{source}")]
-        public IActionResult Get(string source, [FromQuery] string value)
+        public async Task<IActionResult> GetAsync(string source, [FromQuery] string value)
         {
             switch (source.ToUpper())
             {
@@ -21,7 +23,7 @@ namespace WebAPI.Controllers
                     value = GetNytInputValue();
                     break;
                 case "FREEBEE":
-                    value = GetFreebeeInputValue();
+                    value = await GetFreebeeInputValue();
                     break;
                 case "SELF":
                     break;
@@ -34,9 +36,12 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        private string GetFreebeeInputValue()
+        private async Task<string> GetFreebeeInputValue()
         {
-            return "frebiys";
+            var url = @"https://freebee.fun/cgi-bin/today";
+            var result = await HttpClientWrapper<FreebeeGame>.Get(url);
+
+            return result.Center + result.Letters;
         }
 
         private string GetNytInputValue()
