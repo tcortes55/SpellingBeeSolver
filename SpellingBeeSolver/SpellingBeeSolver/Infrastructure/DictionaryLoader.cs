@@ -11,7 +11,7 @@ namespace SpellingBeeSolver.Infrastructure
         public static string[] GetWordsFromFile()
         {
             string buildDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string dataFilePath = buildDir + @"\data\words_alpha.txt";
+            string dataFilePath = buildDir + @"/data/words_alpha.txt";
 
             string[] allWords = File.ReadAllLines(dataFilePath);
             
