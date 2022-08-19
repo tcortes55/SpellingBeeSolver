@@ -16,6 +16,7 @@ const Hexagon = styled.div`
         border-right: 52px solid transparent;
         position: absolute;
         top: -30px;
+        left: 0px;
     }
 
     &:after {
@@ -23,6 +24,7 @@ const Hexagon = styled.div`
         width: 0;
         position: absolute;
         bottom: -30px;
+        left: 0px;
         border-top: 30px solid #6C6;
         border-left: 52px solid transparent;
         border-right: 52px solid transparent;
@@ -32,8 +34,7 @@ const Hexagon = styled.div`
 function HiveCell() {
     return (
         <div>
-            <Hexagon></Hexagon>
-            TEST
+            <Hexagon>A</Hexagon>
         </div>
     )
 }
