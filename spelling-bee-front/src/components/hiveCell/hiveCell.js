@@ -1,17 +1,21 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+const centerColor = '#edc100'
+const outerColor = '#fffa9e'
+
 const Hexagon = styled.div`
     margin-top: 30px;
     height: 104px;
     width: 60px;
-    background-color: #6C6;
+    background-color: ${ props => props.isCenter ? centerColor : outerColor };
     position: relative;
+    color: black;
 
     &:before {
         content: " ";
         width: 0; height: 0;
-        border-right: 30px solid #6C6;
+        border-right: 30px solid ${ props => props.isCenter ? centerColor : outerColor };
         border-bottom: 52px solid transparent;
         border-top: 52px solid transparent;
         position: absolute;
@@ -25,7 +29,7 @@ const Hexagon = styled.div`
         position: absolute;
         right: -30px;
         top: 0px;
-        border-left: 30px solid #6C6;
+        border-left: 30px solid ${ props => props.isCenter ? centerColor : outerColor };
         border-bottom: 52px solid transparent;
         border-top: 52px solid transparent;
     }
@@ -39,10 +43,11 @@ const HexagonContet = styled.div`
     transform: translateY(-50%);
 `;
 
-function HiveCell({ children }) {
+function HiveCell({ children, isCenter }) {
+    console.log(isCenter)
     return (
         <div>
-            <Hexagon>
+            <Hexagon isCenter={isCenter}>
                 <HexagonContet>
                     { children }
                 </HexagonContet>

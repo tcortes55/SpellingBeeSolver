@@ -11,7 +11,8 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <HiveCell>A</HiveCell>
+        <HiveCell isCenter={false}>A</HiveCell>
+        <HiveCell isCenter={true}>T</HiveCell>
         <a
           className="App-link"
           href="https://reactjs.org"
