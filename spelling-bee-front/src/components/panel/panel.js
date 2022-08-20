@@ -3,15 +3,11 @@ import styled, { css } from 'styled-components';
 import AnswerBox from '../answerBox/answerBox';
 import Hive from '../hive';
 
-function Panel() {
-    const words = [];
-    words.push("Word");
-    words.push("Example");
-    words.push("Times");
+function Panel({ gameResponse }) {
     return (
         <div>
-            <Hive letters={"AOCGTIE"}></Hive>
-            <AnswerBox words={words}></AnswerBox>
+            <Hive letters={gameResponse.letters}></Hive>
+            <AnswerBox words={gameResponse.words}></AnswerBox>
         </div>
     );
 }
