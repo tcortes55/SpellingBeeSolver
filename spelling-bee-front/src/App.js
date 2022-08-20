@@ -13,7 +13,7 @@ function App() {
     <TempBg>
       <div className="App">
         <header className="App-header">
-            <Hive></Hive>
+            <Hive letters={"AOCGTIE"}></Hive>
         </header>
       </div>
     </TempBg>

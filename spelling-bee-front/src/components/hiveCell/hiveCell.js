@@ -45,13 +45,11 @@ const HexagonContet = styled.div`
 function HiveCell({ children, isCenter }) {
     console.log(isCenter)
     return (
-        <div>
-            <Hexagon isCenter={isCenter}>
-                <HexagonContet>
-                    { children }
-                </HexagonContet>
-            </Hexagon>
-        </div>
+        <Hexagon isCenter={isCenter}>
+            <HexagonContet>
+                { children }
+            </HexagonContet>
+        </Hexagon>
     )
 }
 

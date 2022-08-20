@@ -4,17 +4,41 @@ import HiveCell from '../hiveCell/hiveCell';
 
 const HiveWrapper = styled.div`
     background-color: purple;
-    padding-left: 80px;
-    padding-right: 80px;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    width: 400px;
+    height: 400px;
 `;
 
-function Hive() {
+const HiveCellWrapper = styled.div`
+    top: 50%;
+    left: 50%;
+    width: fit-content;
+    position: absolute;
+`;
+
+function Hive({ letters }) {
     return (
         <HiveWrapper>
-            <HiveCell isCenter={false}>A</HiveCell>
-            <HiveCell isCenter={true}>T</HiveCell>
+            <HiveCellWrapper style={{transform: "translate(-50%, -50%)"}}>
+                <HiveCell isCenter={true}>{ letters[0] }</HiveCell>
+            </HiveCellWrapper>
+            <HiveCellWrapper style={{transform: "translate(-50%, -154%)"}}>
+                <HiveCell isCenter={false}>{ letters[1] }</HiveCell>
+            </HiveCellWrapper>
+            <HiveCellWrapper style={{transform: "translate(105%, -102%)"}}>
+                <HiveCell isCenter={false}>{ letters[2] }</HiveCell>
+            </HiveCellWrapper>
+            <HiveCellWrapper style={{transform: "translate(105%, 2%)"}}>
+                <HiveCell isCenter={false}>{ letters[3] }</HiveCell>
+            </HiveCellWrapper>
+            <HiveCellWrapper style={{transform: "translate(-50%, 54%)"}}>
+                <HiveCell isCenter={false}>{ letters[4] }</HiveCell>
+            </HiveCellWrapper>
+            <HiveCellWrapper style={{transform: "translate(-205%, 2%)"}}>
+                <HiveCell isCenter={false}>{ letters[5] }</HiveCell>
+            </HiveCellWrapper>
+            <HiveCellWrapper style={{transform: "translate(-205%, -102%)"}}>
+                <HiveCell isCenter={false}>{ letters[6] }</HiveCell>
+            </HiveCellWrapper>
         </HiveWrapper>
     );
 }
