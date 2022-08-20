@@ -1,11 +1,12 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import HiveCell from '../hiveCell/hiveCell';
+import HiveCell from '../hiveCell';
 
 const HiveWrapper = styled.div`
     background-color: purple;
     width: 400px;
     height: 400px;
+    position: relative;
 `;
 
 const HiveCellWrapper = styled.div`

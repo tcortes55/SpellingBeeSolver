@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Hive from './components/hive';
+import Panel from './components/panel';
 import styled from 'styled-components';
 
 const TempBg = styled.div`
@@ -13,7 +13,7 @@ function App() {
     <TempBg>
       <div className="App">
         <header className="App-header">
-            <Hive letters={"AOCGTIE"}></Hive>
+            <Panel></Panel>
         </header>
       </div>
     </TempBg>

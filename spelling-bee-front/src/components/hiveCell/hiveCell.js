@@ -43,7 +43,6 @@ const HexagonContet = styled.div`
 `;
 
 function HiveCell({ children, isCenter }) {
-    console.log(isCenter)
     return (
         <Hexagon isCenter={isCenter}>
             <HexagonContet>
