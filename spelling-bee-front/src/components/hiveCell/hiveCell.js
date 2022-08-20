@@ -5,7 +5,6 @@ const centerColor = '#edc100'
 const outerColor = '#fffa9e'
 
 const Hexagon = styled.div`
-    margin-top: 30px;
     height: 104px;
     width: 60px;
     background-color: ${ props => props.isCenter ? centerColor : outerColor };
