@@ -4,8 +4,8 @@ import HiveCell from '../hiveCell';
 
 const HiveWrapper = styled.div`
     background-color: purple;
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     position: relative;
 `;
 
