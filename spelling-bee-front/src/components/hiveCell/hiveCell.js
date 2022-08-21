@@ -1,8 +1,8 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-const centerColor = '#edc100'
-const outerColor = '#fffa9e'
+const centerColor = '#f7da21';
+const outerColor = '#e6e6e6';
 
 const Hexagon = styled.div`
     height: 104px;
