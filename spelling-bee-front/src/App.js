@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Panel from './components/panel';
 import styled from 'styled-components';
+import { SettingsSelf, SettingsNyt, SettingsFreebee } from './constants';
 
 const TempBg = styled.div`
   width: 100vw;
@@ -24,7 +25,9 @@ function App() {
     <TempBg>
       <div className="App">
         <header className="App-header">
-            <Panel gameResponse={gameResponse} defaultExpanded={true}></Panel>
+            <Panel gameResponse={gameResponse} settings={SettingsSelf}></Panel>
+            <Panel gameResponse={gameResponse} settings={SettingsNyt}></Panel>
+            <Panel gameResponse={gameResponse} settings={SettingsFreebee}></Panel>
         </header>
       </div>
     </TempBg>

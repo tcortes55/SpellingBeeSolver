@@ -7,14 +7,15 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AnswerBox from '../answerBox/answerBox';
 import Hive from '../hive';
 
-function Panel({ gameResponse, defaultExpanded }) {
+function Panel({ gameResponse, settings }) {
+    console.log(settings)
     return (
-        <Accordion defaultExpanded={defaultExpanded}>
+        <Accordion defaultExpanded={settings.DefaultExpanded}>
             <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
             >
-                Self
+                {settings.Title}
             </AccordionSummary>
             <AccordionDetails>
                 <div>
