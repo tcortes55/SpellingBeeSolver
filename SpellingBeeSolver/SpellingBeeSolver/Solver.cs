@@ -16,7 +16,7 @@ namespace SpellingBeeSolver
 
             EnglishDictionary.Words = DictionaryLoader.GetWordsFromFile();
 
-            //foreach (string word in allWords)
+            //foreach (string word in EnglishDictionary.Words)
             //{
             //    if (WordIsValid(word, letters))
             //    {

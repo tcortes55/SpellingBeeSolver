@@ -33,7 +33,7 @@ namespace WebAPI.Controllers
 
             List<string> result = Solver.GetValidWords(value);
 
-            return Ok(result);
+            return Ok(result.OrderByDescending(w => w.Length).ThenBy(w => w));
         }
 
         private async Task<string> GetFreebeeInputValue()
