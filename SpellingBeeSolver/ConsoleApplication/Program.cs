@@ -16,7 +16,7 @@ namespace ConsoleApplication
 
             Console.WriteLine($"Time before: {DateTime.Now}");
             timer.Start();
-            List<string> result = Solver.GetValidWords(letters);
+            List<string> result = Solver.GetValidWords(letters).Wordlist;
             timer.Stop();
 
             Console.WriteLine("Result:");

@@ -3,6 +3,7 @@ using SpellingBeeSolver.Infrastructure;
 using SpellingBeeSolver.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,9 +11,9 @@ namespace SpellingBeeSolver
 {
     public static class Solver
     {
-        public static List<string> GetValidWords(string letters)
+        public static SpellingBeeGame GetValidWords(string letters)
         {
-            List<string> result = new List<string>();
+            List<string> wordList = new List<string>();
 
             EnglishDictionary.Words = DictionaryLoader.GetWordsFromFile();
 
@@ -28,11 +29,23 @@ namespace SpellingBeeSolver
             {
                 if (WordIsValid(word, letters))
                 {
-                    result.Add(word);
+                    wordList.Add(word);
                 }
             });
 
-            return result;
+            wordList = wordList.OrderByDescending(w => w.Length).ThenBy(w => w).ToList();
+
+            SpellingBeeGame gameResult = new SpellingBeeGame()
+            {
+                Center = letters[0].ToString(),
+                Letters = letters.Substring(1),
+                Words = wordList.Count,
+                Total = 0,
+                Wordlist = wordList,
+
+            };
+
+            return gameResult;
         }
 
         private static bool WordIsValid(string word, string letters)
