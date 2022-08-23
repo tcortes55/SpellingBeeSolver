@@ -9,7 +9,7 @@ import Hive from '../hive';
 
 function Panel({ gameResponse, settings }) {
     let isReady = true; //gameResponse.words != undefined;
-    console.log("gameResponse.letters = " + gameResponse.letters)
+    
     return (
         <>
             {isReady && (

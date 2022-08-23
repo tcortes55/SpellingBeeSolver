@@ -18,22 +18,14 @@ const fetchData = async (url) => {
 const fillGameResult = (url, setResponseFunction) => {
   fetchData(url).then((response) => {
     const gameResult = {};
-    gameResult.letters = "AOCGTIE";
-    gameResult.words = response;
+    gameResult.letters = (response.center + response.letters).toUpperCase();
+    gameResult.words = response.wordlist;
 
     setResponseFunction(gameResult);
   });
 }
 
 function App() {
-  const words = [];
-
-  for (let i = 0; i < 30; i++) {
-    words.push("Word");
-    words.push("Example");
-    words.push("Times");
-  }
-
   const [gameResponseSelf, setGameResponseSelf] = useState({});
   const [gameResponseNyt, setGameResponseNyt] = useState({});
   const [gameResponseFreebee, setGameResponseFreebee] = useState({});
