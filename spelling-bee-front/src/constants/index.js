@@ -2,20 +2,23 @@ const localUrl = 'https://localhost:44324';
 const externalUrl = 'https://spellingbeeapi.herokuapp.com';
 
 export const SettingsSelf = {
-    Title: "Self",
+    Title: "Your own game",
     DefaultExpanded: true,
-    Url: localUrl + "/api/spellingbee/self?value="
+    Url: externalUrl + "/api/spellingbee/self?value="
 }
 
 export const SettingsNyt = {
     Title: "New York Times",
     DefaultExpanded: false,
-    Url: localUrl + "/api/spellingbee/nyt"
+    Url: externalUrl + "/api/spellingbee/nyt"
 }
 
 export const SettingsFreebee = {
     Title: "FreeBee",
     DefaultExpanded: false,
-    Url: localUrl + "/api/spellingbee/freebee"
+    Url: externalUrl + "/api/spellingbee/freebee"
 }
 
+export const Strings = {
+    EmptyHive: "       "
+}

@@ -15,6 +15,16 @@ const fetchData = async (url) => {
   return response.data;
 }
 
+const fillGameResult = (url, setResponseFunction) => {
+  fetchData(url).then((response) => {
+    const gameResult = {};
+    gameResult.letters = "AOCGTIE";
+    gameResult.words = response;
+
+    setResponseFunction(gameResult);
+  });
+}
+
 function App() {
   const words = [];
 
@@ -24,41 +34,23 @@ function App() {
     words.push("Times");
   }
 
-  const [gameResponse, setGameResponse] = useState({});
+  const [gameResponseSelf, setGameResponseSelf] = useState({});
+  const [gameResponseNyt, setGameResponseNyt] = useState({});
+  const [gameResponseFreebee, setGameResponseFreebee] = useState({});
   
   useEffect(() => {
-    // const gameResponse2 = {};
-    // gameResponse2.letters = "AOCGTIE";
-    // gameResponse2.words = words;
-
-    console.log(SettingsNyt.Url);
-
-    fetchData(SettingsNyt.Url).then((gameResponse3) => {
-      console.log(gameResponse3);
-
-      const gameResponse2 = {};
-      gameResponse2.letters = "AOCGTIE";
-      gameResponse2.words = gameResponse3;
-
-      setGameResponse(gameResponse2);
-    })
-
-    // const gameResponse2 = fetchData(SettingsNyt.Url);
-
-    // console.log(gameResponse2);
-    // gameResponse2.then(setGameResponse(gameResponse2));
-    // console.log(gameResponse2);
-
-    // setGameResponse(gameResponse2);
+    fillGameResult(SettingsSelf.Url + "aocgtie", setGameResponseSelf)
+    fillGameResult(SettingsNyt.Url, setGameResponseNyt)
+    fillGameResult(SettingsFreebee.Url, setGameResponseFreebee)
   }, []);
 
   return (
     <TempBg>
       <div className="App">
         <header className="App-header">
-            <Panel gameResponse={gameResponse} settings={SettingsSelf}></Panel>
-            <Panel gameResponse={gameResponse} settings={SettingsNyt}></Panel>
-            <Panel gameResponse={gameResponse} settings={SettingsFreebee}></Panel>
+            <Panel gameResponse={gameResponseSelf} settings={SettingsSelf}></Panel>
+            <Panel gameResponse={gameResponseNyt} settings={SettingsNyt}></Panel>
+            <Panel gameResponse={gameResponseFreebee} settings={SettingsFreebee}></Panel>
         </header>
       </div>
     </TempBg>

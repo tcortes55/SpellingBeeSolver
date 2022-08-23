@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
                     return BadRequest();
             }
 
-            List<string> result = Solver.GetValidWords(value);
+            List<string> result = Solver.GetValidWords(value.ToLower());
 
             return Ok(result.OrderByDescending(w => w.Length).ThenBy(w => w));
         }

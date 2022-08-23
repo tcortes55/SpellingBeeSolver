@@ -8,8 +8,8 @@ import AnswerBox from '../answerBox/answerBox';
 import Hive from '../hive';
 
 function Panel({ gameResponse, settings }) {
-    let isReady = gameResponse.letters != undefined;
-    
+    let isReady = true; //gameResponse.words != undefined;
+    console.log("gameResponse.letters = " + gameResponse.letters)
     return (
         <>
             {isReady && (
@@ -22,8 +22,8 @@ function Panel({ gameResponse, settings }) {
                 </AccordionSummary>
                 <AccordionDetails>
                     <div>
-                            <Hive letters={gameResponse.letters}></Hive>
-                            <AnswerBox words={gameResponse.words}></AnswerBox>
+                            <Hive responseLetters={gameResponse.letters ? gameResponse.letters : "       "}></Hive>
+                            <AnswerBox words={gameResponse.words ? gameResponse.words : []}></AnswerBox>
                     </div>
                 </AccordionDetails>
             </Accordion>
