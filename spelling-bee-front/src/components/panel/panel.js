@@ -4,15 +4,15 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import AnswerBox from '../answerBox/answerBox';
+import AnswerBox from '../answerBox';
 import Hive from '../hive';
+import LettersForm from '../lettersForm';
 
 function Panel({ gameResponse, settings }) {
     let isReady = true; //gameResponse.words != undefined;
     
     return (
         <>
-            {isReady && (
             <Accordion defaultExpanded={settings.DefaultExpanded}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -22,12 +22,14 @@ function Panel({ gameResponse, settings }) {
                 </AccordionSummary>
                 <AccordionDetails>
                     <div>
-                            <Hive responseLetters={gameResponse.letters ? gameResponse.letters : "       "}></Hive>
-                            <AnswerBox words={gameResponse.words ? gameResponse.words : []}></AnswerBox>
+                        <Hive responseLetters={gameResponse.letters ? gameResponse.letters : "       "}></Hive>
+                        {
+                            gameResponse.awaitingUser ? <LettersForm></LettersForm>
+                            : <AnswerBox words={gameResponse.words ? gameResponse.words : []}></AnswerBox>
+                        }
                     </div>
                 </AccordionDetails>
             </Accordion>
-            )}
         </>
     );
 }

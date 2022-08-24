@@ -25,13 +25,23 @@ const fillGameResult = (url, setResponseFunction) => {
   });
 }
 
+const generateEmptyGame = (setResponseFunction) => {
+  const gameTemplate = {};
+  gameTemplate.letters = "";
+  gameTemplate.words = [];
+  gameTemplate.awaitingUser = true;
+
+  setResponseFunction(gameTemplate);
+}
+
 function App() {
   const [gameResponseSelf, setGameResponseSelf] = useState({});
   const [gameResponseNyt, setGameResponseNyt] = useState({});
   const [gameResponseFreebee, setGameResponseFreebee] = useState({});
   
   useEffect(() => {
-    fillGameResult(SettingsSelf.Url + "aocgtie", setGameResponseSelf)
+    // fillGameResult(SettingsSelf.Url + "aocgtie", setGameResponseSelf)
+    generateEmptyGame(setGameResponseSelf);
     fillGameResult(SettingsNyt.Url, setGameResponseNyt)
     fillGameResult(SettingsFreebee.Url, setGameResponseFreebee)
   }, []);
