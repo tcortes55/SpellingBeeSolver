@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
 
-function LettersForm({formLabel, handleSubmit}) {
+function GenericTextForm({formLabel, handleSubmit}) {
     const [textValue, setTextValue] = useState("");
 
     const onTextChange = (e) => setTextValue(e.target.value);
@@ -16,4 +16,4 @@ function LettersForm({formLabel, handleSubmit}) {
     );
 }
 
-export default LettersForm;
+export default GenericTextForm;

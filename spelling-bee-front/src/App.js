@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Panel from './components/panel';
-import LettersForm from './components/lettersForm';
+import GenericTextForm from './components/genericTextForm';
 import styled from 'styled-components';
 import { SettingsSelf, SettingsNyt, SettingsFreebee, Strings } from './constants';
 import { fillGameResult } from './api';
@@ -24,7 +24,7 @@ function App() {
   const [gameResponseNyt, setGameResponseNyt] = useState({});
   const [gameResponseFreebee, setGameResponseFreebee] = useState({});
 
-  const testFunc = (txt) => console.log(txt);
+  const handleLettersForm = (letters) => fillGameResult(SettingsSelf.Url + letters, setGameResponseSelf);
   
   useEffect(() => {
     generateEmptyGame(setGameResponseSelf);
@@ -39,7 +39,7 @@ function App() {
             <Panel gameResponse={gameResponseSelf} settings={SettingsSelf}>
               {
                 gameResponseSelf.awaitingUser &&
-                <LettersForm formLabel={Strings.LettersFormLabel} handleSubmit={testFunc}></LettersForm>
+                <GenericTextForm formLabel={Strings.LettersFormLabel} handleSubmit={handleLettersForm}></GenericTextForm>
               }
             </Panel>
             <Panel gameResponse={gameResponseNyt} settings={SettingsNyt}></Panel>
