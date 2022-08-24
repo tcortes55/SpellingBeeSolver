@@ -10,6 +10,7 @@ import LettersForm from '../lettersForm';
 
 function Panel({ gameResponse, settings }) {
     let isReady = true; //gameResponse.words != undefined;
+    const testFunc = (txt) => console.log(txt);
     
     return (
         <>
@@ -24,7 +25,7 @@ function Panel({ gameResponse, settings }) {
                     <div>
                         <Hive responseLetters={gameResponse.letters ? gameResponse.letters : "       "}></Hive>
                         {
-                            gameResponse.awaitingUser ? <LettersForm></LettersForm>
+                            gameResponse.awaitingUser ? <LettersForm handleSubmit={testFunc}></LettersForm>
                             : <AnswerBox words={gameResponse.words ? gameResponse.words : []}></AnswerBox>
                         }
                     </div>
