@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SpellingBeeSolver;
+using SpellingBeeSolver.Model;
 using WebAPI.Helpers;
-using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
                     return BadRequest();
             }
 
-            List<string> result = Solver.GetValidWords(value);
+            SpellingBeeGame result = Solver.GetValidWords(value.ToLower());
 
             return Ok(result);
         }
@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
         private async Task<string> GetFreebeeInputValue()
         {
             var url = @"https://freebee.fun/cgi-bin/today";
-            var result = await HttpClientWrapper<FreebeeGame>.Get(url);
+            var result = await HttpClientWrapper<SpellingBeeGame>.Get(url);
 
             return result.Center + result.Letters;
         }

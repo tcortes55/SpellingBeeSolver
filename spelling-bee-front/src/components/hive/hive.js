@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import HiveCell from '../hiveCell';
+import { Strings } from '../../constants';
 
 const HiveWrapper = styled.div`
     width: 350px;
@@ -15,7 +16,9 @@ const HiveCellWrapper = styled.div`
     position: absolute;
 `;
 
-function Hive({ letters }) {
+function Hive({ responseLetters }) {
+    let letters = responseLetters ? responseLetters : Strings.EmptyHive;
+
     return (
         <HiveWrapper>
             <HiveCellWrapper style={{transform: "translate(-50%, -50%)"}}>

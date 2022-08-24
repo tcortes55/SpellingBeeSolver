@@ -23,7 +23,7 @@ const AnswerItem = styled.li`
 
 function AnswerBox({ words }) {
     return (
-        <SimpleBar style={{maxHeight: "calc(100vh - 500px)"}} forceVisible="y" autoHide={false}>
+        <SimpleBar style={{maxHeight: "calc(100vh - 600px)"}} forceVisible="y" autoHide={false}>
             <AnswerListWrapper>
                 {words.map((word, index) => {
                     return <AnswerItem key={"word_" + index}>{word}</AnswerItem>;

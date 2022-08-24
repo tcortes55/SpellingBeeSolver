@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebAPI.Models
+namespace SpellingBeeSolver.Model
 {
-    public class FreebeeGame
+    public class SpellingBeeGame
     {
         public string Letters { get; set; }
         public string Center { get; set; }
