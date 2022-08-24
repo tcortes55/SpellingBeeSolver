@@ -6,11 +6,9 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AnswerBox from '../answerBox';
 import Hive from '../hive';
-import LettersForm from '../lettersForm';
+import { Strings } from '../../constants';
 
-function Panel({ gameResponse, settings }) {
-    let isReady = true; //gameResponse.words != undefined;
-    const testFunc = (txt) => console.log(txt);
+function Panel({ gameResponse, settings, children }) {
     
     return (
         <>
@@ -23,11 +21,9 @@ function Panel({ gameResponse, settings }) {
                 </AccordionSummary>
                 <AccordionDetails>
                     <div>
-                        <Hive responseLetters={gameResponse.letters ? gameResponse.letters : "       "}></Hive>
-                        {
-                            gameResponse.awaitingUser ? <LettersForm handleSubmit={testFunc}></LettersForm>
-                            : <AnswerBox words={gameResponse.words ? gameResponse.words : []}></AnswerBox>
-                        }
+                        <Hive responseLetters={gameResponse.letters ? gameResponse.letters : Strings.EmptyHive}></Hive>
+                            {children}
+                            <AnswerBox words={gameResponse.words ? gameResponse.words : []}></AnswerBox>
                     </div>
                 </AccordionDetails>
             </Accordion>
