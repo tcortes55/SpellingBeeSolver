@@ -22,8 +22,8 @@ function Panel({ gameResponse, settings, children }) {
                 <AccordionDetails>
                     <div>
                         <Hive responseLetters={gameResponse.letters ? gameResponse.letters : Strings.EmptyHive}></Hive>
-                            {children}
                             <AnswerBox words={gameResponse.words ? gameResponse.words : []}></AnswerBox>
+                            {children}
                     </div>
                 </AccordionDetails>
             </Accordion>
