@@ -20,5 +20,6 @@ export const SettingsFreebee = {
 }
 
 export const Strings = {
-    EmptyHive: "       "
+    EmptyHive: "       ",
+    LettersFormLabel: "Type 7 letters (center letter first!)",
 }
