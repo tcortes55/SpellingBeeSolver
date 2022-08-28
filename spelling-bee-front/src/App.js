@@ -41,7 +41,7 @@ function App() {
               {
                 gameResponseSelf.awaitingUser
                 ? <GenericTextForm formLabel={Strings.LettersFormLabel} handleSubmit={handleLettersForm}></GenericTextForm>
-                : <Button variant="contained" onClick={() => generateEmptyGame(setGameResponseSelf)}>RESET</Button>
+                : <Button variant="contained" onClick={() => generateEmptyGame(setGameResponseSelf)} fullWidth>RESET</Button>
               }
             </Panel>
             <Panel gameResponse={gameResponseNyt} settings={SettingsNyt}></Panel>

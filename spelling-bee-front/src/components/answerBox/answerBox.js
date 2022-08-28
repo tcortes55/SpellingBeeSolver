@@ -4,7 +4,7 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
 const AnswerListWrapper = styled.ul`
-    max-width: 350px;
+    width: 100%;
     text-align: left;
     padding-top: 10px;
     padding-left: 10px;
@@ -23,7 +23,7 @@ const AnswerItem = styled.li`
 
 function AnswerBox({ words }) {
     return (
-        <SimpleBar style={{maxHeight: "calc(100vh - 600px)"}} forceVisible="y" autoHide={false}>
+        <SimpleBar style={{maxHeight: "calc(100vh - 500px)"}} forceVisible="y" autoHide={false}>
             <AnswerListWrapper>
                 {words.map((word, index) => {
                     return <AnswerItem key={"word_" + index}>{word}</AnswerItem>;

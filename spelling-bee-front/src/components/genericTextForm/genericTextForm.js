@@ -11,10 +11,10 @@ function GenericTextForm({formLabel, handleSubmit}) {
     return (
         <div>
             <div>
-                <TextField label={formLabel} focused onChange={onTextChange} value={textValue}></TextField>
+                <TextField label={formLabel} focused onChange={onTextChange} value={textValue} fullWidth></TextField>
             </div>
             <div>
-                <Button variant="contained" onClick={() => handleSubmit(textValue)}>SUBMIT</Button>
+                <Button variant="contained" onClick={() => handleSubmit(textValue)} fullWidth>SUBMIT</Button>
             </div>
         </div>
     );

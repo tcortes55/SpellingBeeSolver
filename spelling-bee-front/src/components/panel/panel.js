@@ -8,6 +8,10 @@ import AnswerBox from '../answerBox';
 import Hive from '../hive';
 import { Strings } from '../../constants';
 
+const AccordionContainer = styled.div`
+    width: 280px;
+`;
+
 function Panel({ gameResponse, settings, children }) {
     
     return (
@@ -20,11 +24,11 @@ function Panel({ gameResponse, settings, children }) {
                     {settings.Title}
                 </AccordionSummary>
                 <AccordionDetails>
-                    <div>
+                    <AccordionContainer>
                         <Hive responseLetters={gameResponse.letters ? gameResponse.letters : Strings.EmptyHive}></Hive>
-                            <AnswerBox words={gameResponse.words ? gameResponse.words : []}></AnswerBox>
-                            {children}
-                    </div>
+                        <AnswerBox words={gameResponse.words ? gameResponse.words : []}></AnswerBox>
+                        {children}
+                    </AccordionContainer>
                 </AccordionDetails>
             </Accordion>
         </>
