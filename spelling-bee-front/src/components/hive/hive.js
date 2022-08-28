@@ -4,8 +4,8 @@ import HiveCell from '../hiveCell';
 import { Strings } from '../../constants';
 
 const HiveWrapper = styled.div`
-    width: 350px;
-    height: 350px;
+    width: 280px;
+    height: 280px;
     position: relative;
 `;
 
