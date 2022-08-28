@@ -8,24 +8,35 @@ import AnswerBox from '../answerBox';
 import Hive from '../hive';
 import { Strings } from '../../constants';
 
-function Panel({ gameResponse, settings, children }) {
-    
+const AccordionContainer = styled.div`
+    width: 280px;
+`;
+
+function Panel({ gameResponse, settings, currentPanel, handleChange, children }) {
+    let isExpanded = settings.Title === currentPanel;
+
     return (
         <>
-            <Accordion defaultExpanded={settings.DefaultExpanded}>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                >
-                    {settings.Title}
-                </AccordionSummary>
-                <AccordionDetails>
-                    <div>
-                        <Hive responseLetters={gameResponse.letters ? gameResponse.letters : Strings.EmptyHive}></Hive>
+            <Accordion
+                defaultExpanded={settings.DefaultExpanded}
+                expanded={isExpanded}
+                onChange={handleChange(settings.Title)}
+            >
+                    <AccordionSummary
+                        expandIcon={
+                            isExpanded ? <div></div> : <ExpandMoreIcon /> 
+                        }
+                        aria-controls="panel1a-content"
+                    >
+                        {settings.Title}
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <AccordionContainer>
+                            <Hive responseLetters={gameResponse.letters ? gameResponse.letters : Strings.EmptyHive}></Hive>
                             <AnswerBox words={gameResponse.words ? gameResponse.words : []}></AnswerBox>
                             {children}
-                    </div>
-                </AccordionDetails>
+                        </AccordionContainer>
+                    </AccordionDetails>
             </Accordion>
         </>
     );

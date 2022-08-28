@@ -4,7 +4,7 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
 const AnswerListWrapper = styled.ul`
-    max-width: 350px;
+    width: 100%;
     text-align: left;
     padding-top: 10px;
     padding-left: 10px;

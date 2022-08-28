@@ -25,6 +25,11 @@ function App() {
   const [gameResponseNyt, setGameResponseNyt] = useState({});
   const [gameResponseFreebee, setGameResponseFreebee] = useState({});
 
+  const [currentPanel, setCurrentPanel] = useState(SettingsSelf.Title);
+  const handlePanelChange = (panel) => (event, isExpanded) => {
+    setCurrentPanel(panel);
+  };
+
   const handleLettersForm = (letters) => fillGameResult(SettingsSelf.Url + letters, setGameResponseSelf);
   
   useEffect(() => {
@@ -37,15 +42,15 @@ function App() {
     <TempBg>
       <div className="App">
         <header className="App-header">
-            <Panel gameResponse={gameResponseSelf} settings={SettingsSelf}>
+            <Panel gameResponse={gameResponseSelf} settings={SettingsSelf} currentPanel={currentPanel} handleChange={handlePanelChange}>
               {
                 gameResponseSelf.awaitingUser
                 ? <GenericTextForm formLabel={Strings.LettersFormLabel} handleSubmit={handleLettersForm}></GenericTextForm>
-                : <Button variant="contained" onClick={() => generateEmptyGame(setGameResponseSelf)}>RESET</Button>
+                : <Button variant="contained" onClick={() => generateEmptyGame(setGameResponseSelf)} fullWidth>RESET</Button>
               }
             </Panel>
-            <Panel gameResponse={gameResponseNyt} settings={SettingsNyt}></Panel>
-            <Panel gameResponse={gameResponseFreebee} settings={SettingsFreebee}></Panel>
+            <Panel gameResponse={gameResponseNyt} settings={SettingsNyt} currentPanel={currentPanel} handleChange={handlePanelChange}></Panel>
+            <Panel gameResponse={gameResponseFreebee} settings={SettingsFreebee} currentPanel={currentPanel} handleChange={handlePanelChange}></Panel>
         </header>
       </div>
     </TempBg>
