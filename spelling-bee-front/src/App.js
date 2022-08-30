@@ -5,7 +5,7 @@ import GenericTextForm from './components/genericTextForm';
 import styled from 'styled-components';
 import { SettingsSelf, SettingsNyt, SettingsFreebee, Strings } from './constants';
 import { fillGameResult } from './api';
-import Button from '@mui/material/Button';
+import ButtonWrapper from './components/buttonWrapper';
 
 const TempBg = styled.div`
   width: 100vw;
@@ -46,7 +46,7 @@ function App() {
               {
                 gameResponseSelf.awaitingUser
                 ? <GenericTextForm formLabel={Strings.LettersFormLabel} handleSubmit={handleLettersForm}></GenericTextForm>
-                : <Button variant="contained" onClick={() => generateEmptyGame(setGameResponseSelf)} fullWidth>RESET</Button>
+                : <ButtonWrapper variant="contained" onClick={() => generateEmptyGame(setGameResponseSelf)} fullWidth>RESET</ButtonWrapper>
               }
             </Panel>
             <Panel gameResponse={gameResponseNyt} settings={SettingsNyt} currentPanel={currentPanel} handleChange={handlePanelChange}></Panel>

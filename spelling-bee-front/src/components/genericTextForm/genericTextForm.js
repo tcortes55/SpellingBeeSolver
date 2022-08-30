@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import ButtonWrapper from '../buttonWrapper';
 import styled from 'styled-components';
 
 function GenericTextForm({formLabel, handleSubmit}) {
@@ -14,7 +14,7 @@ function GenericTextForm({formLabel, handleSubmit}) {
                 <TextField label={formLabel} focused onChange={onTextChange} value={textValue} fullWidth></TextField>
             </div>
             <div>
-                <Button variant="contained" onClick={() => handleSubmit(textValue)} fullWidth>SUBMIT</Button>
+                <ButtonWrapper variant="contained" onClick={() => handleSubmit(textValue)} fullWidth>SUBMIT</ButtonWrapper>
             </div>
         </div>
     );
