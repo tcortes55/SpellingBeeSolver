@@ -22,9 +22,11 @@ namespace SpellingBeeSolver
             //{
             //    if (WordIsValid(word, letters))
             //    {
-            //        result.Add(word);
+            //        wordList.Add(word);
             //    }
             //}
+
+            //wordList = wordList.OrderByDescending(w => w.Length).ThenBy(w => w).ToList();
 
             ConcurrentBag<string> wordCollection = new ConcurrentBag<string>();
 
