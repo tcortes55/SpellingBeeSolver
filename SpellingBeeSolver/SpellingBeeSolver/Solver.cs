@@ -2,6 +2,7 @@
 using SpellingBeeSolver.Infrastructure;
 using SpellingBeeSolver.Model;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,9 @@ namespace SpellingBeeSolver
     {
         public static SpellingBeeGame GetValidWords(string letters)
         {
-            List<string> wordList = new List<string>();
-
             EnglishDictionary.Words = DictionaryLoader.GetWordsFromFile();
+
+            List<string> wordList = new List<string>();
 
             //foreach (string word in EnglishDictionary.Words)
             //{
@@ -25,15 +26,17 @@ namespace SpellingBeeSolver
             //    }
             //}
 
+            ConcurrentBag<string> wordCollection = new ConcurrentBag<string>();
+
             Parallel.ForEach(EnglishDictionary.Words, word =>
             {
                 if (WordIsValid(word, letters))
                 {
-                    wordList.Add(word);
+                    wordCollection.Add(word);
                 }
             });
 
-            wordList = wordList.OrderByDescending(w => w.Length).ThenBy(w => w).ToList();
+            wordList = wordCollection.AsEnumerable().OrderByDescending(w => w.Length).ThenBy(w => w).ToList();
 
             SpellingBeeGame gameResult = new SpellingBeeGame()
             {
