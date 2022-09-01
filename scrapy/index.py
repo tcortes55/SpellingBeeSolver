@@ -17,6 +17,10 @@ app = Flask(__name__)
 output_data = []
 crawl_runner = CrawlerRunner()
 
+@app.route("/")
+def home():
+    return "<h2>Flask app</h2>"
+
 @app.route("/scrape")
 def scrape():
 
