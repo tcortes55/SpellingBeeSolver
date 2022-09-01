@@ -5,8 +5,10 @@ from scrapy.linkextractors import LinkExtractor
 import json
 
 class SpellingBeeGame(scrapy.Item):
-    centerLetter = scrapy.Field()
+    center = scrapy.Field()
     letters = scrapy.Field()
+    words = scrapy.Field()
+    wordlist = scrapy.Field()
 
 class SpellingbeespiderSpider(scrapy.Spider):
     name = 'spellingbeespider'
@@ -27,6 +29,8 @@ class SpellingbeespiderSpider(scrapy.Spider):
         gameData = json.loads(gameDataStr)
 
         center = gameData['today']['centerLetter']
-        outerLetters = gameData['today']['outerLetters']
+        letters = ''.join(gameData['today']['outerLetters'])
+        wordlist = gameData['today']['answers']
+        words = len(wordlist)
 
-        yield SpellingBeeGame (centerLetter = center, letters = outerLetters)
+        yield SpellingBeeGame (center = center, letters = letters, words = words, wordlist = wordlist)
