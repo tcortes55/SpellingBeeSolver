@@ -1,5 +1,4 @@
 import subprocess
-
 from flask import Flask , render_template, jsonify, request, redirect, url_for
 from scrapy import signals
 from scrapy.crawler import CrawlerRunner
@@ -19,10 +18,10 @@ def home():
 
 @app.route("/scrape")
 def scrape():
-    subprocess.check_output(['scrapy', 'crawl', 'spellingbeespider', '-o', 'output.json'])
+    subprocess.check_output(['scrapy', 'crawl', 'spellingbeespider', '-O', 'output.json'])
     with open("output.json") as items_file:
         return items_file.read()
 
-
 if __name__== "__main__":
     app.run(debug=True)
+

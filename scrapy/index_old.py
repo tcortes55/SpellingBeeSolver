@@ -1,3 +1,5 @@
+import asyncio
+import subprocess
 import crochet
 crochet.setup()
 
@@ -24,12 +26,15 @@ def home():
 @app.route("/scrape")
 def scrape():
 
-    baseURL = "https://www.nytimes.com/puzzles/spelling-bee"
-    scrape_with_crochet(baseURL=baseURL) # Passing that URL to our Scraping Function
+    # baseURL = "https://www.nytimes.com/puzzles/spelling-bee"
+    # scrape_with_crochet(baseURL=baseURL) # Passing that URL to our Scraping Function
+    subprocess.check_output(['scrapy', 'crawl', 'spellingbeespider', '-o', 'output.json'])
+    with open("output.json") as items_file:
+        return items_file.read()
 
-    time.sleep(5) # Pause the function while the scrapy spider is running
+    # time.sleep(5) # Pause the function while the scrapy spider is running
     
-    return jsonify(output_data) # Returns the scraped data after being running for 20 seconds.
+    # return jsonify(output_data) # Returns the scraped data after being running for 20 seconds.
 
 @crochet.run_in_reactor
 def scrape_with_crochet(baseURL):
