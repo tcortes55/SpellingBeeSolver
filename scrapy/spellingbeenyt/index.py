@@ -1,9 +1,8 @@
 import subprocess
+import os
+from datetime import datetime
+import scrapy
 from flask import Flask , render_template, jsonify, request, redirect, url_for
-from scrapy import signals
-from scrapy.crawler import CrawlerRunner
-from scrapy.signalmanager import dispatcher
-import time
 
 from spellingbeenyt.spiders.spellingbeenyt import SpellingbeespiderSpider
 
@@ -18,9 +17,18 @@ def home():
 
 @app.route("/scrape")
 def scrape():
-    subprocess.check_output(['scrapy', 'crawl', 'spellingbeespider', '-O', 'output.json'])
-    with open("output.json") as items_file:
-        return items_file.read()
+    filename = generateFilename()
+    subprocess.check_output(['scrapy', 'crawl', 'spellingbeespider', '-O', filename])
+    result = ''
+    with open(filename) as items_file:
+        result = items_file.read()
+    os.remove(filename)
+    return result
+
+def generateFilename():
+    now = datetime.now()
+    filename = "./results/" + now.strftime("%Y%m%d_%H%M%S_%f") + '.json'
+    return filename
 
 if __name__== "__main__":
     app.run(debug=True)
