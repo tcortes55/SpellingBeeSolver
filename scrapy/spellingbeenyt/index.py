@@ -3,6 +3,7 @@ import os
 from datetime import datetime
 import scrapy
 from flask import Flask , render_template, jsonify, request, redirect, url_for
+import json
 
 from spellingbeenyt.spiders.spellingbeenyt import SpellingbeespiderSpider
 
@@ -16,11 +17,12 @@ def home():
 def scrape():
     filename = generateFilename()
     subprocess.check_output(['scrapy', 'crawl', 'spellingbeespider', '-O', filename])
-    result = ''
+    result = {}
     with open(filename) as items_file:
         result = items_file.read()
+        resultJson = json.loads(result)
     os.remove(filename)
-    return result
+    return resultJson[0]
 
 def generateFilename():
     now = datetime.now()

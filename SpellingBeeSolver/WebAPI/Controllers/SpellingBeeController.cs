@@ -20,7 +20,7 @@ namespace WebAPI.Controllers
             switch (source.ToUpper())
             {
                 case "NYT":
-                    value = GetNytInputValue();
+                    value = await GetNytInputValue();
                     break;
                 case "FREEBEE":
                     value = await GetFreebeeInputValue();
@@ -44,9 +44,12 @@ namespace WebAPI.Controllers
             return result.Center + result.Letters;
         }
 
-        private string GetNytInputValue()
+        private async Task<string> GetNytInputValue()
         {
-            return "newyork";
+            var url = @"https://spelling-bee-scraper.herokuapp.com/scrape";
+            var result = await HttpClientWrapper<SpellingBeeGame>.Get(url);
+
+            return result.Center + result.Letters;
         }
     }
 }
