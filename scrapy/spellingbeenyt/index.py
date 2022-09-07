@@ -6,14 +6,11 @@ from flask import Flask , render_template, jsonify, request, redirect, url_for
 
 from spellingbeenyt.spiders.spellingbeenyt import SpellingbeespiderSpider
 
-
-# Creating Flask App Variable
-
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "<h2>Flask app</h2>"
+    return "<h2>Flask app - access /scrape to get today's game from NYT</h2>"
 
 @app.route("/scrape")
 def scrape():
@@ -31,5 +28,5 @@ def generateFilename():
     return filename
 
 if __name__== "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=os.environ.get("PORT", 5000))
 
