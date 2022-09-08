@@ -6,6 +6,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AnswerBox from '../answerBox';
 import Hive from '../hive';
+import Loader from '../loader';
 import { Strings } from '../../constants';
 
 const AccordionContainer = styled.div`
@@ -35,6 +36,7 @@ function Panel({ gameResponse, settings, currentPanel, handleChange, children })
                             <Hive responseLetters={gameResponse.letters ? gameResponse.letters : Strings.EmptyHive}></Hive>
                             <AnswerBox words={gameResponse.words ? gameResponse.words : []}></AnswerBox>
                             {children}
+                            {gameResponse.awaitingApi && <Loader/>}
                         </AccordionContainer>
                     </AccordionDetails>
             </Accordion>

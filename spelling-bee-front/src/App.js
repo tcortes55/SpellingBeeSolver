@@ -16,21 +16,25 @@ const generateEmptyGame = (setResponseFunction) => {
   gameTemplate.letters = "";
   gameTemplate.words = [];
   gameTemplate.awaitingUser = true;
+  gameTemplate.awaitingApi = false;
 
   setResponseFunction(gameTemplate);
 }
 
 function App() {
-  const [gameResponseSelf, setGameResponseSelf] = useState({});
-  const [gameResponseNyt, setGameResponseNyt] = useState({});
-  const [gameResponseFreebee, setGameResponseFreebee] = useState({});
+  const [gameResponseSelf, setGameResponseSelf] = useState({awaitingApi: true});
+  const [gameResponseNyt, setGameResponseNyt] = useState({awaitingApi: true});
+  const [gameResponseFreebee, setGameResponseFreebee] = useState({awaitingApi: true});
 
   const [currentPanel, setCurrentPanel] = useState(SettingsSelf.Title);
   const handlePanelChange = (panel) => (event, isExpanded) => {
     setCurrentPanel(panel);
   };
 
-  const handleLettersForm = (letters) => fillGameResult(SettingsSelf.Url + letters, setGameResponseSelf);
+  const handleLettersForm = (letters) => {
+    setGameResponseSelf({ awaitingApi: true });
+    fillGameResult(SettingsSelf.Url + letters, setGameResponseSelf)
+  };
   
   useEffect(() => {
     generateEmptyGame(setGameResponseSelf);

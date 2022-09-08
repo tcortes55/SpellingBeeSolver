@@ -10,6 +10,7 @@ export const fillGameResult = (url, setResponseFunction) => {
       const gameResult = {};
       gameResult.letters = (response.center + response.letters).toUpperCase();
       gameResult.words = response.wordlist;
+      gameResult.awaitingApi = false;
   
       setResponseFunction(gameResult);
     });
