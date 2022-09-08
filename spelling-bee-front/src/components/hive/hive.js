@@ -5,7 +5,7 @@ import { Strings } from '../../constants';
 
 const HiveWrapper = styled.div`
     width: 280px;
-    height: 280px;
+    height: 260px;
     position: relative;
 `;
 
