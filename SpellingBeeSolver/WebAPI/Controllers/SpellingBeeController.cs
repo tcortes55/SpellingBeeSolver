@@ -46,7 +46,7 @@ namespace WebAPI.Controllers
 
         private async Task<string> GetNytInputValue()
         {
-            var url = @"https://spelling-bee-scraper.herokuapp.com/scrape";
+            var url = @"https://spelling-bee-scraper-034v.onrender.com/scrape";
             var result = await HttpClientWrapper<SpellingBeeGame>.Get(url);
 
             return result.Center + result.Letters;
