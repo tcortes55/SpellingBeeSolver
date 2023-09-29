@@ -1,5 +1,5 @@
 const localUrl = 'https://localhost:44324';
-const externalUrl = 'https://spellingbeeapi.herokuapp.com';
+const externalUrl = 'https://spelling-bee-api.onrender.com';
 
 export const SettingsSelf = {
     Title: "Your own game",
