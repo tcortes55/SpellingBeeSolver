@@ -14,7 +14,7 @@ At first, this was supposed to be a simple console application where the user in
 
 ### ASP.NET Core Web API
 
-Besides the console application, I also implemented an ASP.NET Core Web API that receives the 7 letters and returns a JSON object with the answers. I used Docker to deploy it to Heroku for free (that is, [until November/2022, then I'll have to search for a different host </3 RIP Heroku free tier](https://help.heroku.com/RSBRUH58/removal-of-heroku-free-product-plans-faq)).
+Besides the console application, I also implemented an ASP.NET Core Web API that receives the 7 letters and returns a JSON object with the answers. I used Docker to deploy it to ~Heroku for free (that is, [until November/2022, then I'll have to search for a different host </3 RIP Heroku free tier](https://help.heroku.com/RSBRUH58/removal-of-heroku-free-product-plans-faq))~ Render.com for free.
 
 ### React client
 
@@ -36,7 +36,7 @@ The web scraper was implemented in Python, using Scrapy. It is very simple since
 
 ### Deploy
 
-Docker made it much, much easier to deploy both APIs since I mostly didn't have to deal with the specifics of Heroku (also, Heroku doesn't provide hosting for .NET Core applications, but we can circumvent this by deploying a Docker container).
+Docker made it much, much easier to deploy both APIs since I mostly didn't have to deal with the specifics of ~Heroku~ Render.com (also, ~Heroku~ Render.com doesn't provide hosting for .NET Core applications, but we can circumvent this by deploying a Docker container).
 
 ## TL;DR
 
